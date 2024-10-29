@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desajunior Artline</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e1e2f, #2e2e3f, #3e3e4f);
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #countdown-container {
+            position: relative;
+            width: 60%;
+            max-width: 600px;
+            padding: 2em;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            z-index: 10;
+        }
+
+        #countdown {
+            font-size: 3em;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .food-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .food-item {
+            position: absolute;
+            font-size: 2.5em;
+            animation: fall 7s linear infinite;
+            opacity: 0.85;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="food-background"></div>
+
+    <div id="countdown-container">
+        <div id="countdown">¡Que empiece el Desajunior!: Loading...</div>
+    </div>
+
+    <script>
+        function getCountdownTime() {
+            const now = new Date();
+            const targetTime = new Date();
+            targetTime.setHours(10, 30, 0, 0);
+
+            if (now > targetTime) {
+                targetTime.setDate(targetTime.getDate() + 1);
+            }
+
+            return targetTime;
+        }
+
+        function startCountdown() {
+            const countdownElement = document.getElementById("countdown");
+            setInterval(() => {
+                const now = new Date();
+                const countdownTime = getCountdownTime();
+                const timeDifference = countdownTime - now;
+
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `¡Que empiece el Desajunior!: ${hours}h ${minutes}m ${seconds}s`;
+
+                if (timeDifference < 0) {
+                    countdownElement.innerHTML = "¡Es hora del Desajunior! 🍞☕";
+                }
+            }, 1000);
+        }
+
+        startCountdown();
+
+        const foodBackground = document.querySelector('.food-background');
+        const foodItems = ["🥪", "🥞"];
+
+        for (let i = 0; i < 30; i++) {
+            const item = document.createElement('div');
+            item.className = 'food-item';
+            item.style.left = `${Math.random() * 100}vw`;
+            item.style.animationDelay = `${Math.random() * 5}s`;
+            item.style.animationDuration = `${Math.random() * 7 + 5}s`;
+            item.innerText = foodItems[Math.floor(Math.random() * foodItems.length)];
+            foodBackground.appendChild(item);
+        }
+    </script>
+
+</body>
+</html>

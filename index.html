@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desajunior Countdown</title>
+    <title>Desajuniors Artline</title>
     <style>
 
         body {
@@ -69,13 +69,13 @@
 
     
         #cisne1 {
-            left: -150px;
+            left: -250px;
             top: 50%;
             transform: translateY(-50%);
         }
 
         #cisne2 {
-            right: -150px;
+            right: -250px;
             top: 50%;
             transform: translateY(-50%);
         }
@@ -156,9 +156,15 @@
 
         const employees = [
             { name: "Aleix", date: "10/30" },
-            { name: "María", date: "12/01" },
-            { name: "Juan", date: "03/22" },
-            { name: "Lucía", date: "05/14" }
+            { name: "Enol", date: "11/08" },
+            { name: "Junior", date: "12/27" },
+            { name: "Gabriel", date: "07/21" },
+            { name: "Pablo", date: "12/01" },
+            { name: "Rambo", date: "10/28" },
+            { name: "Ness", date: "09/21" },
+            { name: "Dani", date: "10/29" },
+            { name: "Raul", date: "02/16" },
+            { name: "Sigrid", date: "05/14" }
         ];
 
         function checkBirthday() {
@@ -168,7 +174,7 @@
             const birthdayPerson = employees.find(employee => employee.date === todayStr);
 
             if (birthdayPerson) {
-                birthdayMessage.textContent = `¡Hoy es el cumpleaños de ${birthdayPerson.name}! 🎉`;
+                birthdayMessage.textContent = `¡Hoy es el cumpleaños de ${birthdayPerson.name}! ¡Pincho doble! 🎉`;
             } else {
                 birthdayMessage.textContent = "Hoy no es el cumpleaños de nadie, toca pagar 💸";
             }

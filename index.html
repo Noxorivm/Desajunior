@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desajunior Artline</title>
+    <title>Desajunior Countdown</title>
     <style>
+
         body {
             background: linear-gradient(135deg, #1e1e2f, #2e2e3f, #3e3e4f);
             color: #ffffff;
@@ -12,6 +13,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
             overflow: hidden;
@@ -57,6 +59,39 @@
             0% { transform: translateY(-100vh); }
             100% { transform: translateY(100vh); }
         }
+
+        .floating-image {
+            position: absolute;
+            width: 200px;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.8)); /* Contorno */
+        }
+
+    
+        #cisne1 {
+            left: -150px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #cisne2 {
+            right: -150px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(-10px); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(-10px); }
+        }
+
+        #birthday-message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #00ffff;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+        }
     </style>
 </head>
 <body>
@@ -64,10 +99,15 @@
     <div class="food-background"></div>
 
     <div id="countdown-container">
+        <img src="src/cisne.png" id="cisne1" class="floating-image" alt="Nube 1">
+        <img src="src/cisne2.jpg" id="cisne2" class="floating-image" alt="Nube 2">
         <div id="countdown">¡Que empiece el Desajunior!: Loading...</div>
     </div>
 
+    <div id="birthday-message">Cargando cumpleaños...</div>
+
     <script>
+     
         function getCountdownTime() {
             const now = new Date();
             const targetTime = new Date();
@@ -113,6 +153,28 @@
             item.innerText = foodItems[Math.floor(Math.random() * foodItems.length)];
             foodBackground.appendChild(item);
         }
+
+        const employees = [
+            { name: "Aleix", date: "10/30" },
+            { name: "María", date: "12/01" },
+            { name: "Juan", date: "03/22" },
+            { name: "Lucía", date: "05/14" }
+        ];
+
+        function checkBirthday() {
+            const today = new Date();
+            const todayStr = (today.getMonth() + 1).toString().padStart(2, "0") + "/" + today.getDate().toString().padStart(2, "0");
+            const birthdayMessage = document.getElementById("birthday-message");
+            const birthdayPerson = employees.find(employee => employee.date === todayStr);
+
+            if (birthdayPerson) {
+                birthdayMessage.textContent = `¡Hoy es el cumpleaños de ${birthdayPerson.name}! 🎉`;
+            } else {
+                birthdayMessage.textContent = "Hoy no es el cumpleaños de nadie, toca pagar 💸";
+            }
+        }
+
+        checkBirthday();
     </script>
 
 </body>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desajuniors Artline</title>
     <style>
 
@@ -87,19 +86,28 @@
 
         #enol-container {
             position: absolute;
-            top: 75%;
-            left: 35%;
-            transform: translate(-50%, -50%);
+            top: calc(50% + 50px); /* Mover 50px hacia abajo */
+            left: calc(50% - 20px); /* Mover 20px hacia la izquierda */
             display: flex;
             align-items: center;
-            animation: float 6s ease-in-out infinite;
+            animation: shake 2s infinite; /* Efecto de zumbido */
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-50px, 0); }
+            35% { transform: translate(-20px, 0); }
+            45% { transform: translate(-50px, 0); }
+            50% { transform: translate(50px, 0); }
+            75% { transform: translate(-50px, 0); }
         }
 
         #enol {
             width: 150px;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8));
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8)); /* Contorno de neón rojo */
         }
 
+        /* Bocadillo de diálogo */
         .dialog {
             margin-left: 15px;
             background: rgba(255, 255, 255, 0.1);
@@ -113,6 +121,7 @@
             position: relative;
         }
 
+        /* Triángulo del bocadillo */
         .dialog::after {
             content: "";
             position: absolute;
@@ -124,6 +133,7 @@
             border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
         }
 
+        /* Mensaje de cumpleaños */
         #birthday-message {
             margin-top: 20px;
             font-size: 1.5em;
@@ -142,6 +152,7 @@
         <div id="countdown">¡Que empiece el Desajunior!: Cargando pinchos...</div>
     </div>
 
+    <!-- Contenedor central para Enol y su bocadillo -->
     <div id="enol-container">
         <img src="src/enol.png" id="enol" alt="Enol">
         <div class="dialog">¿Aquí no se desayuna o qué?</div>
@@ -215,15 +226,4 @@
             const birthdayMessage = document.getElementById("birthday-message");
             const birthdayPerson = employees.find(employee => employee.date === todayStr);
 
-            if (birthdayPerson) {
-                birthdayMessage.textContent = `¡Hoy es el cumpleaños de ${birthdayPerson.name}! ¡Pincho doble! 🎉`;
-            } else {
-                birthdayMessage.textContent = "Hoy no es el cumpleaños de nadie, toca pagar 💸";
-            }
-        }
-
-        checkBirthday();
-    </script>
-
-</body>
-</html>
+            if (birthdayPerson)

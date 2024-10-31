@@ -85,7 +85,6 @@
             100% { transform: translateY(-10px); }
         }
 
-        /* Contenedor para Enol y su diálogo */
         #enol-container {
             position: absolute;
             top: 75%;
@@ -93,16 +92,14 @@
             transform: translate(-50%, -50%);
             display: flex;
             align-items: center;
-            animation: float 6s ease-in-out infinite; /* Flotación conjunta */
+            animation: float 6s ease-in-out infinite;
         }
 
-        /* Imagen de Enol con contorno rojo */
         #enol {
             width: 150px;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8)); /* Contorno de neón rojo */
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8));
         }
 
-        /* Bocadillo de diálogo */
         .dialog {
             margin-left: 15px;
             background: rgba(255, 255, 255, 0.1);
@@ -116,7 +113,6 @@
             position: relative;
         }
 
-        /* Triángulo del bocadillo */
         .dialog::after {
             content: "";
             position: absolute;
@@ -128,7 +124,6 @@
             border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
         }
 
-        /* Mensaje de cumpleaños */
         #birthday-message {
             margin-top: 20px;
             font-size: 1.5em;
@@ -147,7 +142,6 @@
         <div id="countdown">¡Que empiece el Desajunior!: Cargando pinchos...</div>
     </div>
 
-    <!-- Contenedor central para Enol y su bocadillo -->
     <div id="enol-container">
         <img src="src/enol.png" id="enol" alt="Enol">
         <div class="dialog">¿Aquí no se desayuna o qué?</div>
